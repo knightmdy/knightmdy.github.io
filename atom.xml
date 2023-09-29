@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://knightmdy.github.io</id>
     <title>Gridea</title>
-    <updated>2023-09-29T09:22:12.418Z</updated>
+    <updated>2023-09-29T09:23:06.759Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://knightmdy.github.io"/>
     <link rel="self" href="https://knightmdy.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>knightmdy&apos;s blog</subtitle>
     <logo>https://knightmdy.github.io/images/avatar.png</logo>
     <icon>https://knightmdy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2023, Gridea</rights>
