@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://knightmdy.github.io</id>
     <title>Gridea</title>
-    <updated>2023-10-03T11:54:05.507Z</updated>
+    <updated>2023-10-12T06:18:42.207Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://knightmdy.github.io"/>
     <link rel="self" href="https://knightmdy.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://knightmdy.github.io/images/avatar.png</logo>
     <icon>https://knightmdy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2023, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[JavaScript学习笔记(一)]]></title>
+        <id>https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-yi/</id>
+        <link href="https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-yi/">
+        </link>
+        <updated>2023-10-12T05:51:09.000Z</updated>
+        <content type="html"><![CDATA[<p>类和构造函数<br>
+1.使用class关键字声明一个类  。<br>
+2.使用constructor关键字声明构造函数。<br>
+3.使用extends关键字声明继承关系 。<br>
+4.构造函数中需要做的第一件事是使用 super() 调用父类的构造函数，并传递父类参数。如果子类有任何自己的初始化内容需要完成，它也必须先使用 super() 来调用父类的构造函数，并传递父类构造函数期望的任何参数。(先父后子)<br>
+5.私有数据和私有方法使用#开头。</p>
+<p>对象原型<br>
+1.JavaScript 中所有的对象都有一个内置属性，称为它的 prototype（原型）。它本身是一个对象，故原型对象也会有它自己的原型，逐渐构成了原型链。原型链终止于拥有 null 作为其原型的对象上。( 指向对象原型的属性并不是 prototype。它的名字不是标准的，但实际上所有浏览器都使用 <strong>proto</strong>。访问对象原型的标准方法是 Object.getPrototypeOf()。)<br>
+2.如果在一个对象中定义了一个属性，而在该对象的原型中定义了一个同名的属性,该对象会首先调用本身的属性,即为属性的&quot;遮蔽&quot;。<br>
+3.在 JavaScript 中，有多种设置对象原型的方法，我将介绍两种：Object.create() 和构造函数。<br>
+使用 Object.create() :<br>
+const A = (){......};const B = Object.create(A);//B的原型为A<br>
+使用构造函数 :<br>
+在 JavaScript 中，所有的函数都有一个名为 prototype 的属性。当你调用一个函数作为构造函数时，这个属性被设置为新构造对象的原型（按照惯例，在名为 <strong>proto</strong> 的属性中）。因此，如果我们设置一个构造函数的 prototype，我们可以确保所有用该构造函数创建的对象都被赋予该原型：<br>
+const A = (){......};function B(){};Object.assign(B.prototype, A);/或 B.prototype.函数 = A.函数;</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[电影推荐(一)]]></title>
         <id>https://knightmdy.github.io/post/dian-ying-tui-jian-yi/</id>

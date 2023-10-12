@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>我的第一篇博客(写于23年国庆假期) | Gridea</title>
+<title>JavaScript学习笔记(一) | Gridea</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,10 +18,11 @@
 
 
 
-    <meta name="description" content="最近看到身边的同学开始弄自几的博客,就自几弄了一个
-之前尝试过使用一位大佬开源的hexo模板,但是由于不熟悉该框架选择了换掉,而且该框架操作不便
-https://www.fomal.cc/
-在实现博客过程中学习了很多cmd命令,git操作和..." />
+    <meta name="description" content="类和构造函数
+1.使用class关键字声明一个类  。
+2.使用constructor关键字声明构造函数。
+3.使用extends关键字声明继承关系 。
+4.构造函数中需要做的第一件事是使用 super() 调用父类的构造函数，并传递父类参..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -93,26 +94,34 @@ https://www.fomal.cc/
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">我的第一篇博客(写于23年国庆假期)</h2>
-            <div class="post-date">2023-09-29</div>
+            <h2 class="post-title">JavaScript学习笔记(一)</h2>
+            <div class="post-date">2023-10-12</div>
             
             <div class="post-content" v-pre>
-              <p>最近看到身边的同学开始弄自几的博客,就自几弄了一个<br>
-之前尝试过使用一位大佬开源的hexo模板,但是由于不熟悉该框架选择了换掉,而且该框架操作不便<br>
-https://www.fomal.cc/<br>
-在实现博客过程中学习了很多cmd命令,git操作和GitHub操作知识<br>
-选择现在这个框架主要是因为写博客可以在客户端运行,可以节省一些时间<br>
-现在作为一名计算机专业大二学生,自几认为自己上学年玩的有点过了<br>
-接下来我将主要进行js,vue,数据结构等方面的的学习,希望记录自己的成长</p>
+              <p>类和构造函数<br>
+1.使用class关键字声明一个类  。<br>
+2.使用constructor关键字声明构造函数。<br>
+3.使用extends关键字声明继承关系 。<br>
+4.构造函数中需要做的第一件事是使用 super() 调用父类的构造函数，并传递父类参数。如果子类有任何自己的初始化内容需要完成，它也必须先使用 super() 来调用父类的构造函数，并传递父类构造函数期望的任何参数。(先父后子)<br>
+5.私有数据和私有方法使用#开头。</p>
+<p>对象原型<br>
+1.JavaScript 中所有的对象都有一个内置属性，称为它的 prototype（原型）。它本身是一个对象，故原型对象也会有它自己的原型，逐渐构成了原型链。原型链终止于拥有 null 作为其原型的对象上。( 指向对象原型的属性并不是 prototype。它的名字不是标准的，但实际上所有浏览器都使用 <strong>proto</strong>。访问对象原型的标准方法是 Object.getPrototypeOf()。)<br>
+2.如果在一个对象中定义了一个属性，而在该对象的原型中定义了一个同名的属性,该对象会首先调用本身的属性,即为属性的&quot;遮蔽&quot;。<br>
+3.在 JavaScript 中，有多种设置对象原型的方法，我将介绍两种：Object.create() 和构造函数。<br>
+使用 Object.create() :<br>
+const A = (){......};const B = Object.create(A);//B的原型为A<br>
+使用构造函数 :<br>
+在 JavaScript 中，所有的函数都有一个名为 prototype 的属性。当你调用一个函数作为构造函数时，这个属性被设置为新构造对象的原型（按照惯例，在名为 <strong>proto</strong> 的属性中）。因此，如果我们设置一个构造函数的 prototype，我们可以确保所有用该构造函数创建的对象都被赋予该原型：<br>
+const A = (){......};function B(){};Object.assign(B.prototype, A);/或 B.prototype.函数 = A.函数;</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://knightmdy.github.io/post/hello-gridea/">
+                <a href="https://knightmdy.github.io/post/dian-ying-tui-jian-yi/">
                   <h3 class="post-title">
-                    Hello Gridea
+                    电影推荐(一)
                   </h3>
                 </a>
               </div>
