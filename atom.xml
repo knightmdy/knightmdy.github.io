@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://knightmdy.github.io</id>
     <title>Gridea</title>
-    <updated>2023-10-13T15:09:25.104Z</updated>
+    <updated>2023-10-14T12:11:33.929Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://knightmdy.github.io"/>
     <link rel="self" href="https://knightmdy.github.io/atom.xml"/>
@@ -10,6 +10,82 @@
     <logo>https://knightmdy.github.io/images/avatar.png</logo>
     <icon>https://knightmdy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2023, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[JavaScript学习笔记(四)]]></title>
+        <id>https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-si/</id>
+        <link href="https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-si/">
+        </link>
+        <updated>2023-10-14T12:04:49.000Z</updated>
+        <content type="html"><![CDATA[<p>函数<br>
+1.闭包(?嵌套作用域?)<br>
+闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。<br>
+但是，外部函数却不能访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一种封装。<br>
+此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将比内部函数执行的持续时间要长。当内部函数以某一种方式被任何一个外部函数之外的任何作用域访问时，就会创建闭包。<br>
+备注： 如果一个闭包的函数定义了一个和外部外部的某个变量名称相同的变量，那么这个闭包将无法引用外部作用域中的这个变量。（内部作用域的变量“覆盖”外部作用域，直至程序退出内部作用域。可以将其视作命名冲突。）<br>
+2.使用 arguments 对象<br>
+函数的实际参数会被保存在一个类似数组的 arguments 对象中。在函数内，你可以按如下方式找出传入的参数：<br>
+arguments[i];<br>
+其中 i 是参数的序号，从 0 开始。所以第一个传入函数的参数会是 arguments[0]。参数的数量由 arguments.length 表示。<br>
+使用 arguments 对象，你可以处理比声明更多的参数来调用函数。这在你事先不知道会需要将多少参数传递给函数时十分有用。你可以用 arguments.length 来获得实际传递给函数的参数的数量，然后用 arguments 对象来访问每个参数。<br>
+备注： arguments 变量只是“类数组”，而不是数组。它与数组类似，有索引编号和 length 属性。尽管如此，它并不具备 Array 对象的所有数组操作方法。<br>
+3.参数<br>
+默认参数 (在 JavaScript 中，函数参数的默认值是 undefined。然而，在某些情况下设置不同的默认值可能会很有用。这正是默认参数的作用。)<br>
+剩余参数(剩余参数语法允许将不确定数量的参数表示为数组。)<br>
+在下面的示例中，multiply 函数使用剩余参数收集从第二个参数开始到最后的参数。然后，该函数将它们与第一个参数相乘。<br>
+function multiply(multiplier, ...theArgs) {<br>
+return theArgs.map((x) =&gt; multiplier * x);<br>
+}<br>
+const arr = multiply(2, 1, 2, 3);<br>
+console.log(arr); // [2, 4, 6]</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavaScript学习笔记(三)]]></title>
+        <id>https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-san/</id>
+        <link href="https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-san/">
+        </link>
+        <updated>2023-10-14T11:46:38.000Z</updated>
+        <content type="html"><![CDATA[<p>箭头函数<br>
+箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或new.target。箭头函数表达式更适用于那些本来需要匿名函数的地方，并且它不能用作构造函数。<br>
+注意<br>
+1.没有单独的this<br>
+2.通过 call 或 apply 调用<br>
+由于 箭头函数没有自己的 this 指针，通过 call() 或 apply() 方法调用一个函数时，只能传递参数（不能绑定 this---译者注），他们的第一个参数会被忽略。（这种现象对于 bind 方法同样成立 --- 译者注）<br>
+3.不绑定arguments,在大多数情况下，使用剩余参数是相较使用arguments对象的更好选择。<br>
+4.箭头函数不能用作构造器，和 new一起用会抛出错误。<br>
+5.箭头函数没有prototype属性。<br>
+6.yield 关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作函数生成器。<br>
+7.箭头函数在参数和箭头之间不能换行。但是，可以通过在‘=&gt;’之后换行，或者用‘( )’、'{ }'来实现换行。</p>
+<p>function 函数名(参数){<br>
+函数体<br>
+返回值<br>
+}//正常函数<br>
+函数名(参数)=&gt;{<br>
+函数体<br>
+返回值<br>
+}//箭头函数</p>
+<p>示例<br>
+//正常函数(返回数组)<br>
+var elements = [&quot;Hydrogen&quot;, &quot;Helium&quot;, &quot;Lithium&quot;, &quot;Beryllium&quot;];<br>
+elements.map(function (element) {<br>
+return element.length;<br>
+}); // 返回数组：[8, 6, 7, 9]<br>
+// 上面的普通函数可以改写成如下的箭头函数<br>
+elements.map((element) =&gt; {<br>
+return element.length;<br>
+}); // [8, 6, 7, 9]<br>
+// 当箭头函数只有一个参数时，可以省略参数的圆括号<br>
+elements.map(element =&gt; {<br>
+return element.length;<br>
+}); // [8, 6, 7, 9]<br>
+// 当箭头函数的函数体只有一个 <code>return</code> 语句时，可以省略 <code>return</code> 关键字和方法体的花括号<br>
+elements.map((element) =&gt; element.length); // [8, 6, 7, 9]<br>
+// 在这个例子中，因为我们只需要 <code>length</code> 属性，所以可以使用参数解构<br>
+// 需要注意的是字符串 <code>&quot;length&quot;</code> 是我们想要获得的属性的名称，而 <code>lengthFooBArX</code> 则只是个变量名，<br>
+// 可以替换成任意合法的变量名<br>
+elements.map(({ length: lengthFooBArX }) =&gt; lengthFooBArX); // [8, 6, 7, 9]</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[写于20岁(2023.10.13)]]></title>
         <id>https://knightmdy.github.io/post/xie-yu-20-sui-20231013/</id>

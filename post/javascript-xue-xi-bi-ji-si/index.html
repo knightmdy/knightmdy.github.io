@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>JavaScript学习笔记(四) | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://knightmdy.github.io/favicon.ico?v=1697285482301">
+<link rel="stylesheet" href="https://knightmdy.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="函数
+1.闭包(?嵌套作用域?)
+闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。
+但是，外部函数却..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://knightmdy.github.io">
+        <img src="https://knightmdy.github.io/images/avatar.png?v=1697285482301" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      knightmdy's blog
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://knightmdy.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">JavaScript学习笔记(四)</h2>
+            <div class="post-date">2023-10-14</div>
+            
+            <div class="post-content" v-pre>
+              <p>函数<br>
+1.闭包(?嵌套作用域?)<br>
+闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数具有定义在外部函数中的所有变量和函数（以及外部函数能访问的所有变量和函数）的完全访问权限。<br>
+但是，外部函数却不能访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一种封装。<br>
+此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将比内部函数执行的持续时间要长。当内部函数以某一种方式被任何一个外部函数之外的任何作用域访问时，就会创建闭包。<br>
+备注： 如果一个闭包的函数定义了一个和外部外部的某个变量名称相同的变量，那么这个闭包将无法引用外部作用域中的这个变量。（内部作用域的变量“覆盖”外部作用域，直至程序退出内部作用域。可以将其视作命名冲突。）<br>
+2.使用 arguments 对象<br>
+函数的实际参数会被保存在一个类似数组的 arguments 对象中。在函数内，你可以按如下方式找出传入的参数：<br>
+arguments[i];<br>
+其中 i 是参数的序号，从 0 开始。所以第一个传入函数的参数会是 arguments[0]。参数的数量由 arguments.length 表示。<br>
+使用 arguments 对象，你可以处理比声明更多的参数来调用函数。这在你事先不知道会需要将多少参数传递给函数时十分有用。你可以用 arguments.length 来获得实际传递给函数的参数的数量，然后用 arguments 对象来访问每个参数。<br>
+备注： arguments 变量只是“类数组”，而不是数组。它与数组类似，有索引编号和 length 属性。尽管如此，它并不具备 Array 对象的所有数组操作方法。<br>
+3.参数<br>
+默认参数 (在 JavaScript 中，函数参数的默认值是 undefined。然而，在某些情况下设置不同的默认值可能会很有用。这正是默认参数的作用。)<br>
+剩余参数(剩余参数语法允许将不确定数量的参数表示为数组。)<br>
+在下面的示例中，multiply 函数使用剩余参数收集从第二个参数开始到最后的参数。然后，该函数将它们与第一个参数相乘。<br>
+function multiply(multiplier, ...theArgs) {<br>
+return theArgs.map((x) =&gt; multiplier * x);<br>
+}<br>
+const arr = multiply(2, 1, 2, 3);<br>
+console.log(arr); // [2, 4, 6]</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-san/">
+                  <h3 class="post-title">
+                    JavaScript学习笔记(三)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
