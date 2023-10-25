@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>JavaScript学习笔记(二) | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://knightmdy.github.io/favicon.ico?v=1698223570040">
+<link rel="stylesheet" href="https://knightmdy.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="异步JavaScript
+1.异步的实现目标
+通过调用一个函数来启动一个长期运行的操作
+让函数开始操作并立即返回，这样我们的程序就可以保持对其他事件做出反应的能力
+当操作最终完成时，通知我们操作的结果。
+2.回调函数(×)
+在 JavaSc..." />
+    <meta name="keywords" content="JavaScript" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://knightmdy.github.io">
+        <img src="https://knightmdy.github.io/images/avatar.png?v=1698223570040" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      knightmdy's blog
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://knightmdy.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">JavaScript学习笔记(二)</h2>
+            <div class="post-date">2023-10-12</div>
+            
+            <div class="post-content" v-pre>
+              <p>异步JavaScript<br>
+1.异步的实现目标<br>
+通过调用一个函数来启动一个长期运行的操作<br>
+让函数开始操作并立即返回，这样我们的程序就可以保持对其他事件做出反应的能力<br>
+当操作最终完成时，通知我们操作的结果。<br>
+2.回调函数(×)<br>
+在 JavaScript 中，函数即对象。函数将另一个函数作为参数，并在函数体内部调用它。JavaScript里，我们叫它“回调”。所以，被传递给另一个函数作为参数的函数叫作回调函数。回调函数确保：函数在某个任务完成之前不运行，在任务完成之后立即运行。它帮助我们编写异步 JavaScript 代码，避免问题和错误。<br>
+3.Promise<br>
+链式调用<br>
+fetch(&quot;heeps://...&quot;)<br>
+.then(...)<br>
+.then(...)<br>
+.then(...); //&quot;...&quot;代表箭头函数或其他参数类型<br>
+错误捕获<br>
+fetch(&quot;heeps://...&quot;)<br>
+.then(...)<br>
+.then(...)<br>
+.catch(...);<br>
+合并使用多个 Promise<br>
+例:<br>
+Promise.all()    (所有的 Promise 都得到实现，但它们并不相互依赖。)<br>
+Promise.any()  (等待一组 Promise 中的某一个 Promise 的执行，而不关心是哪一个。)<br>
+const fetchPromise1 = fetch(<br>
+&quot;https://&quot;,<br>
+);<br>
+const fetchPromise2 = fetch(<br>
+&quot;https://&quot;,<br>
+);<br>
+const fetchPromise3 = fetch(<br>
+&quot;https://&quot;,<br>
+);<br>
+Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])<br>
+.then(/<em>(responses) =&gt; {<br>
+for (const response of responses) {<br>
+console.log(<code>${response.url}：${response.status}</code>);<br>
+}<br>
+}</em>/)<br>
+.catch((error) =&gt; {<br>
+console.error(<code>获取失败：${error}</code>);<br>
+});<br>
+async 和 await<br>
+在一个函数的开头添加 async，就可以使其成为一个异步函数(返回值为promise对象)。在异步函数中，你可以在调用一个返回 Promise 的函数之前使用 await 关键字。这使得代码在该点上等待，直到 Promise 被完成，这时 Promise 的响应被当作返回值，或者被拒绝的响应被作为错误抛出。async 和 await 关键字使得从一系列连续的异步函数调用中建立一个操作变得更加容易，避免了创建显式 Promise 链，并允许你像编写同步代码那样编写异步代码。<br>
+async function fetchProducts() {<br>
+try {<br>
+const response = await fetch(<br>
+&quot;https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json&quot;,<br>
+);<br>
+if (!response.ok) {<br>
+throw new Error(<code>HTTP 请求错误：${response.status}</code>);<br>
+}<br>
+const json = await response.json();<br>
+return json;<br>
+} catch (error) {<br>
+console.error(<code>无法获取产品列表：${error}</code>);<br>
+}<br>
+}<br>
+const jsonPromise = fetchProducts();<br>
+jsonPromise.then((json) =&gt; console.log(json[0].name));</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://knightmdy.github.io/tag/zeMVx-RAd/" class="tag">
+                    JavaScript
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-yi/">
+                  <h3 class="post-title">
+                    JavaScript学习笔记(一)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

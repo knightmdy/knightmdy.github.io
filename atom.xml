@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://knightmdy.github.io</id>
     <title>Gridea</title>
-    <updated>2023-10-14T12:11:33.929Z</updated>
+    <updated>2023-10-25T08:46:12.641Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://knightmdy.github.io"/>
     <link rel="self" href="https://knightmdy.github.io/atom.xml"/>
@@ -93,7 +93,73 @@ elements.map(({ length: lengthFooBArX }) =&gt; lengthFooBArX); // [8, 6, 7, 9]</
         </link>
         <updated>2023-10-13T15:05:36.000Z</updated>
         <content type="html"><![CDATA[<p>奔三了!!!<br>
-<img src="https://knightmdy.github.io/post-images/1697209754674.jpg" alt="" loading="lazy"></p>
+<img src="https://knightmdy.github.io/post-images/1698223568249.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavaScript学习笔记(二)]]></title>
+        <id>https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-er/</id>
+        <link href="https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-er/">
+        </link>
+        <updated>2023-10-12T06:26:39.000Z</updated>
+        <content type="html"><![CDATA[<p>异步JavaScript<br>
+1.异步的实现目标<br>
+通过调用一个函数来启动一个长期运行的操作<br>
+让函数开始操作并立即返回，这样我们的程序就可以保持对其他事件做出反应的能力<br>
+当操作最终完成时，通知我们操作的结果。<br>
+2.回调函数(×)<br>
+在 JavaScript 中，函数即对象。函数将另一个函数作为参数，并在函数体内部调用它。JavaScript里，我们叫它“回调”。所以，被传递给另一个函数作为参数的函数叫作回调函数。回调函数确保：函数在某个任务完成之前不运行，在任务完成之后立即运行。它帮助我们编写异步 JavaScript 代码，避免问题和错误。<br>
+3.Promise<br>
+链式调用<br>
+fetch(&quot;heeps://...&quot;)<br>
+.then(...)<br>
+.then(...)<br>
+.then(...); //&quot;...&quot;代表箭头函数或其他参数类型<br>
+错误捕获<br>
+fetch(&quot;heeps://...&quot;)<br>
+.then(...)<br>
+.then(...)<br>
+.catch(...);<br>
+合并使用多个 Promise<br>
+例:<br>
+Promise.all()    (所有的 Promise 都得到实现，但它们并不相互依赖。)<br>
+Promise.any()  (等待一组 Promise 中的某一个 Promise 的执行，而不关心是哪一个。)<br>
+const fetchPromise1 = fetch(<br>
+&quot;https://&quot;,<br>
+);<br>
+const fetchPromise2 = fetch(<br>
+&quot;https://&quot;,<br>
+);<br>
+const fetchPromise3 = fetch(<br>
+&quot;https://&quot;,<br>
+);<br>
+Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])<br>
+.then(/<em>(responses) =&gt; {<br>
+for (const response of responses) {<br>
+console.log(<code>${response.url}：${response.status}</code>);<br>
+}<br>
+}</em>/)<br>
+.catch((error) =&gt; {<br>
+console.error(<code>获取失败：${error}</code>);<br>
+});<br>
+async 和 await<br>
+在一个函数的开头添加 async，就可以使其成为一个异步函数(返回值为promise对象)。在异步函数中，你可以在调用一个返回 Promise 的函数之前使用 await 关键字。这使得代码在该点上等待，直到 Promise 被完成，这时 Promise 的响应被当作返回值，或者被拒绝的响应被作为错误抛出。async 和 await 关键字使得从一系列连续的异步函数调用中建立一个操作变得更加容易，避免了创建显式 Promise 链，并允许你像编写同步代码那样编写异步代码。<br>
+async function fetchProducts() {<br>
+try {<br>
+const response = await fetch(<br>
+&quot;https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json&quot;,<br>
+);<br>
+if (!response.ok) {<br>
+throw new Error(<code>HTTP 请求错误：${response.status}</code>);<br>
+}<br>
+const json = await response.json();<br>
+return json;<br>
+} catch (error) {<br>
+console.error(<code>无法获取产品列表：${error}</code>);<br>
+}<br>
+}<br>
+const jsonPromise = fetchProducts();<br>
+jsonPromise.then((json) =&gt; console.log(json[0].name));</p>
 ]]></content>
     </entry>
     <entry>
@@ -117,6 +183,21 @@ const A = (){......};const B = Object.create(A);//B的原型为A<br>
 使用构造函数 :<br>
 在 JavaScript 中，所有的函数都有一个名为 prototype 的属性。当你调用一个函数作为构造函数时，这个属性被设置为新构造对象的原型（按照惯例，在名为 <strong>proto</strong> 的属性中）。因此，如果我们设置一个构造函数的 prototype，我们可以确保所有用该构造函数创建的对象都被赋予该原型：<br>
 const A = (){......};function B(){};Object.assign(B.prototype, A);/或 B.prototype.函数 = A.函数;</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据结构与算法(一)]]></title>
+        <id>https://knightmdy.github.io/post/shu-ju-jie-gou-yu-suan-fa-yi/</id>
+        <link href="https://knightmdy.github.io/post/shu-ju-jie-gou-yu-suan-fa-yi/">
+        </link>
+        <updated>2023-10-08T09:56:07.000Z</updated>
+        <summary type="html"><![CDATA[<p>day 1  复杂度分析</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>day 1  复杂度分析</p>
+<!-- more -->
+<p>时间复杂度</p>
+<!-- more -->
+<p>空间复杂度</p>
 ]]></content>
     </entry>
     <entry>
