@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://knightmdy.github.io</id>
     <title>Gridea</title>
-    <updated>2023-10-25T09:11:05.398Z</updated>
+    <updated>2023-12-16T17:25:45.042Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://knightmdy.github.io"/>
     <link rel="self" href="https://knightmdy.github.io/atom.xml"/>
@@ -10,6 +10,156 @@
     <logo>https://knightmdy.github.io/images/avatar.png</logo>
     <icon>https://knightmdy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2023, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[TypeScript学习笔记(一)]]></title>
+        <id>https://knightmdy.github.io/post/typescript/</id>
+        <link href="https://knightmdy.github.io/post/typescript/">
+        </link>
+        <updated>2023-12-06T05:47:21.000Z</updated>
+        <content type="html"><![CDATA[<p>TypeScript 是带有编译时类型检查器的 JavaScript 运行时</p>
+<p>类型约束<br>
+let a:number = 10;<br>
+let b:string = &quot;b&quot;;<br>
+let c:number[] = [1,2,3];<br>
+let d:Array<number> = [1,2,3];</p>
+<p>interface User {<br>
+name: string;<br>
+id: number;<br>
+}<br>
+class UserAccount {<br>
+name: string;<br>
+id: number;<br>
+constructor(name: string, id: number) {<br>
+this.name = name;<br>
+this.id = id;<br>
+}<br>
+}<br>
+const user: User = new UserAccount(&quot;Murphy&quot;, 1);<br>
+参数缺省/属性缺省<br>
+function func1(a:string,b?:string):string{<br>
+return a+b;<br>
+}<br>
+let obj:{<br>
+a:number;<br>
+b?:string;<br>
+} = {<br>
+a:1,<br>
+// b:B<br>
+}</p>
+<p>interface接口(结构体)<br>
+自定义一个约束结构,然后实例化<br>
+interface MyList{<br>
+list:{<br>
+id:number;<br>
+name:string;<br>
+}[]<br>
+}<br>
+interface MyData{<br>
+a:number;<br>
+b:string;<br>
+data:MyList<br>
+//接口的嵌套<br>
+}//类型约束用分号<br>
+let obj:MyData{<br>
+a:1,<br>
+b:&quot;B&quot;;<br>
+data:{<br>
+list:[<br>
+{id:1,name:&quot;张三&quot;},<br>
+{id:2,name:&quot;李四&quot;}<br>
+]<br>
+}<br>
+}//创建对象用逗号<br>
+interface在vue中使用场景 :: axios的二次封装.api的解耦<br>
+interface的继承 extends</p>
+<p>类class<br>
+数据加方法<br>
+class Person{<br>
+Name:string;<br>
+Age:number;<br>
+constructor(name:string,age:number){<br>
+this.Name = name;<br>
+this.Age = age;<br>
+}<br>
+}<br>
+let p = new Person(&quot;张三&quot;,18);</p>
+<p>修饰符<br>
+public (默认)<br>
+private<br>
+protected<br>
+readonly 只读<br>
+abstract 抽象(1.不完成具体功能 2.不能new 3,可继承extends)</p>
+<p>clsss的implements约束<br>
+interface Z{<br>
+Z();<br>
+}<br>
+interface X{<br>
+X();<br>
+}<br>
+class A implements Z,X{<br>
+Z();<br>
+X();<br>
+}</p>
+<p>泛型<br>
+不预先指定具体类型,使用时再指定类型<br>
+interface Array<T>{</p>
+<p>}//泛型<T><br>
+let arr1:Aray<number> = [1,2,3];<br>
+function fun<T>(arg:T){<br>
+return arg;<br>
+}<br>
+fun<number>(1);<br>
+fun<string>(&quot;1&quot;);<br>
+泛型接口<br>
+...<br>
+泛型结合class<br>
+...</p>
+<p>装饰器<br>
+一个方法,用来拓展类,属性,方法,参数的功能<br>
+类装饰器(无法传参)<br>
+@fun1<br>
+装饰器工厂<br>
+@fun2()<br>
+装饰器组合<br>
+结合起来一起使用的时候, 会先 从上至下 的执行所有的装饰器工厂, 拿到所有真正的装饰器, 然后再 从下至上 的执行所有的装饰器<br>
+@demo1<br>
+@demo2()<br>
+@demo3()<br>
+@demo4<br>
+/*结果是：<br>
+demo2<br>
+demo3<br>
+demo4<br>
+demo3里面<br>
+demo2里面<br>
+demo1<br>
+*/<br>
+属性装饰器<br>
+function fun3( arg:any ){<br>
+return ( target:any , attr:any )=&gt;{<br>
+target[attr] = arg;<br>
+}<br>
+}<br>
+class Obj3{<br>
+@fun3('张三')<br>
+//@ts-ignore<br>
+userName:string<br>
+}<br>
+方法装饰器<br>
+function test( target: any, propertyKey: string, descriptor: PropertyDescriptor ) {<br>
+console.log( target );<br>
+console.log( propertyKey );<br>
+console.log( descriptor );<br>
+}<br>
+class Person {<br>
+@test<br>
+sayName() {<br>
+console.log( 'say name...' )<br>
+return 'say name...';<br>
+}<br>
+}</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript学习笔记(四)]]></title>
         <id>https://knightmdy.github.io/post/javascript-xue-xi-bi-ji-si/</id>
